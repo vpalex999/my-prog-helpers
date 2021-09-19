@@ -7,6 +7,63 @@
     <title>Мои программные подсказки</title>
 </head>
 <body>
-    
+    <main>
+        <article>
+            <h1>Базовые команды GIT</h1>
+            <section>
+                <h2>Узнать текущее состояние</h2>
+                <p>git status</p>
+            </section>
+            <section>
+                <h2>Посмотреть изменения в непроиндексированных файлах</h2>
+                <p>git diff</p>
+            </section>
+            <section>
+                <h2>Посмотреть изменения в проиндексированных файлах</h2>
+                <p>git diff --staged "имя проиндексированного файла"</p>
+            </section>
+            <section>
+                <h2>Как откатить закомиченное изменение</h2>
+                <p>git checkout "имя файла"</p>
+            </section>
+            <section>
+                <h2>Если случайно удалили закомиченый файл</h2>
+                <p>git checkout "удалённый файл"</p>
+            </section>
+            <section>
+                <h2>Посмотреть историю комитов</h2>
+                <p>git log</p>
+                <p>git log --oneline</p>
+                <p>git log -1  показывает только последний коммит</p>
+            </section>
+            <section>
+                <h2>Удалить файл из коммита</h2>
+                <p>git checkout "хеш коммита" "имя файла"</p>
+                <p>удалённый файл появится в: Changes to be comitted</p>
+            </section>
+            <section>
+                <h2>Как убрать файл из индекса</h2>
+                <p>git reset HEAD "имя файла"</p>
+            </section>
+            <section>
+                <h2>Как закоммитить</h2>
+                <p>git commit -m 'some text'</p>
+            </section>
+            <section>
+                <h2>Как посмотреть коммит</h2>
+                <p>git show 'хэш коммита'</p>
+            </section>
+            <section>
+                <h2>Как исправить сообщение в последнем коммите</h2>
+                <p>git commit --amend -m "new text"</p>
+            </section>
+            <section>
+                <h2>Как убрать файл из последнего коммита</h2>
+                <p>git rm "filename" удаляет файл на fs</p>
+                <p>git rm --cashed 'filename' только исключить из коммита без удаления на fs</p>
+                <p>git commit --amend --no-edit</p>
+            </section>
+        </article>
+    </main>
 </body>
 </html>
