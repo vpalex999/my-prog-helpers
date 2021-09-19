@@ -35,6 +35,7 @@
                 <p>git log</p>
                 <p>git log --oneline</p>
                 <p>git log -1  показывает только последний коммит</p>
+                <p>git log --oneline --all --graph - посмотреть полный логс графом</p>
             </section>
             <section>
                 <h2>Удалить файл из коммита</h2>
@@ -62,6 +63,96 @@
                 <p>git rm "filename" удаляет файл на fs</p>
                 <p>git rm --cashed 'filename' только исключить из коммита без удаления на fs</p>
                 <p>git commit --amend --no-edit</p>
+            </section>
+            <section>
+                <h2>Посмотреть структуру коммита</h2>
+                <p>git cat-file -p "хэш коммита"</p>
+            </section>
+            <section>
+                <h2>Как переключиться в другой коммит и создать ветку</h2>
+                <p>git checkout "хэш коммита"</p>
+                <p>git checkout -b yellow-design "хэш коммита" - перемещение в коммит с созданием указателя</p>
+            </section>
+            <section>
+                <h2>Слияние веток</h2>
+                <p>Находимся в master</p>
+                <p>git merge "имя ветки" -m "текст коммита"</p>
+            </section>
+            <section>
+                <h2>Как создать новую ветку в текущем коммите</h2>
+                <p>git checkout -b "имя новой ветки"</p>
+            </section>
+            <section>
+                <h2>Переименовать текущую локальную ветку</h2>
+                <p>git branch -m newname</p>
+            </section>
+            <section>
+                <h2>Переименовать удалённую ветку</h2>
+                <p>git push origin localname:newname</p>
+            </section>
+            <section>
+                <h2>Удалить удалённую ветку</h2>
+                <p>git push origin :deleting-branch</p>
+            </section>
+            <section>
+                <h2>Связать локальную ветку с удалённой</h2>
+                <p>git branch --set-upstream-to=origin/comments</p>
+            </section>
+            <section>
+                <h2>Как настроить SSH с GITHub</h2>
+                <ul>
+                    <li>Скопировать c проекта на GITHub строку URL с выбором SSH</li>
+                    <li>Создать на локальной машине репозиторий</li>
+                    <li>Проверить ограничение доступа командой: git push -u origin master</li>
+                    <li>Генерация ключей на локальной машине
+                        <ul>
+                            <li>
+                                <p>В домашней папке создать или зайти в директорию .ssh: mkdir ~/.ssh</p>
+                            </li>
+                            <li>
+                                Сгенерировать пару ключей
+                                <pre>Сгенерировать пару ключей
+                                    ssh-keygen -t rsa -b 4096 -C "vpalex@mail.ru"
+                                    Generating public/private rsa key pair.
+                                    Enter file in which to save the key (/home/vpalex999/.ssh/id_rsa): github-2021-09-19
+                                    Enter passphrase (empty for no passphrase): 
+                                    Enter same passphrase again: 
+                                    Your identification has been saved in github-2021-09-19.
+                                    Your public key has been saved in github-2021-09-19.pub.
+                                    The key fingerprint is:
+                                    SHA256:7IV4+3CrQ0yoGbRsGxzlAa+gO5d7vVfb1AVIgV84918 vpalex@mail.ru
+                                    The key's randomart image is:
+                                    +---[RSA 4096]----+
+                                    |    .oo    oo+   |
+                                    |    oo .  . + +  |
+                                    |  .+ oo.   . + o |
+                                    | . .B..o..  .   E|
+                                    |.  ..*.oS .  . .o|
+                                    | . .+  ooo. . . .|
+                                    |o o  . .+..+     |
+                                    | o .. . o+...    |
+                                    |  ..  .o.oo      |
+                                    +----[SHA256]-----+</pre>
+                            </li>
+                            <li>Загрузить публичный ключ на GITHUB: cat github-2021-09-19.pub</li>
+                            <li>
+                                <pre>
+                                    Проверка ssh
+                                    ssh -T -i ~/.ssh/github-2021-09-19 git@github.com
+                                    Hi vpalex999! You've successfully authenticated, but GitHub does not provide shell access.
+                                </pre>
+                            </li>
+                            <li>
+                                <p>>Создать конфигурационный файл в .ssh</p>
+                                <p>vi config с содержанием:</p>
+                                <pre>
+                                    Host github.com
+                                        IdentityFile ~/.ssh/github-2021-09-19
+                                </pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
         </article>
     </main>
